@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35707.178
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{803FD0C6-D64E-4E16-9DC3-1DAEC859A3D2}") = "DesktopRaspi32", "DesktopRaspi32.vgdbcmake", "{A96E1498-878D-4771-A80F-D4E96FBDB3E0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|VisualGDB = Debug|VisualGDB
+		MinSizeRel|VisualGDB = MinSizeRel|VisualGDB
+		Release|VisualGDB = Release|VisualGDB
+		RelWithDebInfo|VisualGDB = RelWithDebInfo|VisualGDB
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A96E1498-878D-4771-A80F-D4E96FBDB3E0}.Debug|VisualGDB.ActiveCfg = Debug|VisualGDB
+		{A96E1498-878D-4771-A80F-D4E96FBDB3E0}.Debug|VisualGDB.Build.0 = Debug|VisualGDB
+		{A96E1498-878D-4771-A80F-D4E96FBDB3E0}.MinSizeRel|VisualGDB.ActiveCfg = MinSizeRel|VisualGDB
+		{A96E1498-878D-4771-A80F-D4E96FBDB3E0}.MinSizeRel|VisualGDB.Build.0 = MinSizeRel|VisualGDB
+		{A96E1498-878D-4771-A80F-D4E96FBDB3E0}.Release|VisualGDB.ActiveCfg = Release|VisualGDB
+		{A96E1498-878D-4771-A80F-D4E96FBDB3E0}.Release|VisualGDB.Build.0 = Release|VisualGDB
+		{A96E1498-878D-4771-A80F-D4E96FBDB3E0}.RelWithDebInfo|VisualGDB.ActiveCfg = RelWithDebInfo|VisualGDB
+		{A96E1498-878D-4771-A80F-D4E96FBDB3E0}.RelWithDebInfo|VisualGDB.Build.0 = RelWithDebInfo|VisualGDB
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
