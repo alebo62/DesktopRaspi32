@@ -14,6 +14,13 @@ class Sound : public QObject
 	snd_pcm_hw_params_t *hwparams;
 	snd_pcm_sframes_t frames;
 	
+	snd_ctl_t *ctl;
+	snd_ctl_event_t * 	event;
+		
+	const char* name = "hw:2";
+	snd_async_handler_t * 	handler;
+	int private_data;
+	//void callback(snd_async_handler_t * h);
 	unsigned char play_buffer[960];
 	unsigned char *mic_buffer = nullptr;
 	

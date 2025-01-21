@@ -8,13 +8,18 @@ Sound::Sound(QObject *parent)
 	sound_play_init();
 }
 
+void callback(snd_async_handler_t* h)
+{
+	qDebug() << "callback";
+}
+
 void Sound::sound_mic_init()
 {
 	int err;
 	int dir = 0;
 	snd_pcm_uframes_t frames = 320;
 	unsigned rate = 8000;
-	const char* device = "plughw:1";
+	const char* device = "plughw:2";
 	
 	if ((err = snd_pcm_open(&handle_mic, device, SND_PCM_STREAM_CAPTURE, 0)) < 0)
 	{
@@ -83,7 +88,42 @@ void Sound::sound_mic_init()
 		if (mic_buffer)
 			qDebug() << "mic buffer ok!";
 	}
+// ----------------------------------------------------------	
+	
+
+	err = snd_ctl_open(&ctl, name, SND_CTL_ASYNC);
+	
+	if (err < 0) {
+		qDebug() << "Cannot open ctl " << name;
+	}
+	else
+	{
+		qDebug() << "Open ctl " << name;
+	}
+	
+//	err = snd_ctl_subscribe_events(ctl, 0);
+//	if (err < 0)
+//	{
+//		qDebug() << "Cannot open subscribe events to ctl " <<  name;
+//	}
+//	else
+//	{
+//		qDebug() << "Open subscribe events to ctl " <<  name;
+//	}
+//	snd_ctl_event_alloca(&event);
+	
+	
+	err = snd_async_add_ctl_handler(&handler, ctl, callback, &private_data);
+	
+	qDebug() << " Open subscribe events to ctl" << err;
+		
+	
 }
+
+//void Sound::callback(snd_async_handler_t* h)
+//{
+//	qDebug() << "callback";
+//}
 
 
 void Sound::sound_play_init()
@@ -112,7 +152,7 @@ void Sound::sound_play_init()
 	
 	
 	
-	pollfd* fd;
+	//pollfd* fd;
 	
 	//snd_ctl_close(ctl);
 	

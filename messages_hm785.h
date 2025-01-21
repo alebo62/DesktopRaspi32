@@ -51,6 +51,5 @@ public:
 	quint8 analog_audio_rx[8] { 2, 0xD6, 0, 1, 0, 1, 0, 3 };
 	quint8 analog_audio_pgain[10] { 2, 0xDC, 0, 4, 0, 0, 0, 0, 0, 3 };
 	quint8 analog_audio_route[10] { 2, 0x10, 0x04, 3, 0, 1, 1, 1, 0, 3 };
-	
 		
 };

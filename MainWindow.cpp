@@ -16,6 +16,10 @@ MainWindow::MainWindow(QWidget *parent) :
 		qDebug() << "unable open";
 	else
 		qDebug() << "open";
+	
+	
+	connect(ui->pushButton_ptt, SIGNAL(pressed()), this, SLOT(ptt_pressed()));
+	connect(ui->pushButton_ptt, SIGNAL(released()), this, SLOT(ptt_released()));
 
 	//hid_close(handle);
 
@@ -31,15 +35,30 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::ButtonClicked()
+void MainWindow::ptt_pressed()
 {
-//    QMessageBox msgBox;
-//    msgBox.setText("Hello, World!");
-//    msgBox.setWindowTitle("VisualGDB Qt Demo");
-//    msgBox.exec();
+	
+	emit(sig_ptt(1));
+}
+
+void MainWindow::ptt_released()
+{
+	
+	emit(sig_ptt(0));
 }
 
 
-void MainWindow::pttKeySlot(int i)
+// Принимаем сигнал от hid
+void MainWindow::slot_ptt(int i)
 {
+	
+}
+
+//  Заглушка
+void MainWindow::ButtonClicked()
+{
+	//    QMessageBox msgBox;
+	//    msgBox.setText("Hello, World!");
+	//    msgBox.setWindowTitle("VisualGDB Qt Demo");
+	//    msgBox.exec();
 }

@@ -100,10 +100,28 @@
                 </Files>
                 <RelatedFilterName>Source Files</RelatedFilterName>
               </VirtualSourceFolder>
+              <VirtualSourceFolder>
+                <Name>DesktopRaspi32</Name>
+                <Subfolders />
+                <Files>
+                  <string>DesktopRaspi32.cpp</string>
+                </Files>
+                <RelatedFilterName>Source Files</RelatedFilterName>
+              </VirtualSourceFolder>
+              <VirtualSourceFolder>
+                <Name>DesktopRasp32_H</Name>
+                <Subfolders />
+                <Files>
+                  <string>MyThreadMic.h</string>
+                  <string>MyThreadHid.h</string>
+                </Files>
+                <RelatedFilterName>Header Files</RelatedFilterName>
+              </VirtualSourceFolder>
             </Subfolders>
             <Files />
           </RootVirtualSourceFolder>
           <HeaderDiscoveryMode>Default</HeaderDiscoveryMode>
+          <ResourceDirectories />
         </CMakeTargetSpecificSettings>
       </TargetSpecificSettings>
       <DeploymentDirectory>/home/pi</DeploymentDirectory>
