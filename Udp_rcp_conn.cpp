@@ -10,7 +10,7 @@ void Udp::rad_conn_tim_slot()
 	udp_sock_rcp->writeDatagram((char*)messagesHm785->conn, 12, QHostAddress(reader->udp_ip[rcv_rcp]), reader->udp_port_rcp);
 	//udpAN_RCP.writeDatagram((char*)conn, 12, QHostAddress(host), AN_RCP);
 	qDebug() << "connect timer";
-	connection = 0;
+	connection[rcv_rcp] = 0;
 	radioConn_tim->stop();	
 }
 
@@ -145,12 +145,12 @@ void Udp::radio_init(void)
 		udp_sock_rcp->writeDatagram((char*)send_command, messagesHm785->dig_audio_tx[3] + 7 + 6, QHostAddress(reader->udp_ip[rcv_rcp]), reader->udp_port_rcp);
 		send_req_id++;
 		//dig_audio_rx[6] = 1;
-		//radioInit = true;
+		isRadioInit[rcv_rcp] = true;
 
 	}
 	else if (ba_udp_rcp.at(16) == (char)0xDF && ba_udp_rcp.at(17) == (char)0x80 && (route_cnt == 2))
 	{
-
+		isRadioInit[rcv_rcp] = true;
 		qDebug() << "tx route" << rcv_rcp;
 		route_cnt = 0;
 

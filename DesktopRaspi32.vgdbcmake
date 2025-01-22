@@ -97,6 +97,9 @@
                   <string>Udp_rcp_conn.cpp</string>
                   <string>Udp_rtp.cpp</string>
                   <string>Udp_send_call_report.cpp</string>
+                  <string>Udp_rtp_rx.cpp</string>
+                  <string>Udp_rtp_tx.cpp</string>
+                  <string>Udp_rcp_tx.cpp</string>
                 </Files>
                 <RelatedFilterName>Source Files</RelatedFilterName>
               </VirtualSourceFolder>
@@ -116,6 +119,16 @@
                   <string>MyThreadHid.h</string>
                 </Files>
                 <RelatedFilterName>Header Files</RelatedFilterName>
+              </VirtualSourceFolder>
+              <VirtualSourceFolder>
+                <Name>MainWindow</Name>
+                <Subfolders />
+                <Files>
+                  <string>MainWindow.cpp</string>
+                  <string>MainWindow_ChanSelect.cpp</string>
+                  <string>MainWindow_Ptt.cpp</string>
+                </Files>
+                <RelatedFilterName>Source Files</RelatedFilterName>
               </VirtualSourceFolder>
             </Subfolders>
             <Files />

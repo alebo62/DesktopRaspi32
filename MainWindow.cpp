@@ -20,6 +20,9 @@ MainWindow::MainWindow(QWidget *parent) :
 	
 	connect(ui->pushButton_ptt, SIGNAL(pressed()), this, SLOT(ptt_pressed()));
 	connect(ui->pushButton_ptt, SIGNAL(released()), this, SLOT(ptt_released()));
+	
+	connect(ui->pushButton_ChUp,  SIGNAL(clicked()),  this, SLOT(ch_up_slot()));
+	connect(ui->pushButton_ChDwn, SIGNAL(clicked()), this,  SLOT(ch_dwn_slot()));
 
 	//hid_close(handle);
 
@@ -35,25 +38,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::ptt_pressed()
-{
-	
-	emit(sig_ptt(1));
-}
-
-void MainWindow::ptt_released()
-{
-	
-	emit(sig_ptt(0));
-}
-
-
-// Принимаем сигнал от hid
-void MainWindow::slot_ptt(int i)
-{
-	
-}
-
 //  Заглушка
 void MainWindow::ButtonClicked()
 {
@@ -62,3 +46,5 @@ void MainWindow::ButtonClicked()
 	//    msgBox.setWindowTitle("VisualGDB Qt Demo");
 	//    msgBox.exec();
 }
+
+

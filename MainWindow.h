@@ -4,6 +4,11 @@
 #include <QMainWindow>
 #include <QTimer>
 #include "hidapi/hidapi.h"
+#include "SettingsReader.h"
+#include "Udp.h"
+
+extern SettingsReader* reader;
+extern Udp* udp;
 
 namespace Ui {
 	class MainWindow;
@@ -35,10 +40,12 @@ class MainWindow : public QMainWindow
 private:
 	Ui::MainWindow *ui;
 	
-	public slots :
+public slots :
 		void slot_ptt(int);
 	void ptt_pressed();
 	void ptt_released();
+	void ch_up_slot();
+	void ch_dwn_slot();
 	
 signals :
 	void sig_ptt(int);

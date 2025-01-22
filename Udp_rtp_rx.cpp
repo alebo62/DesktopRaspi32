@@ -26,24 +26,32 @@ void Udp::readPendDgrmRtp()
 	}
 	else if (ba_udp_rtp.at(3) == 0x02) // heatbeat
 	{
-		qDebug() << "rtp heatbeat" << rcv_rtp;
+		//qDebug() << "rtp heatbeat" << rcv_rtp;
 		udp_sock_rtp->writeDatagram((char*) messagesHm785->ack_heatbeat, 6, QHostAddress(reader->udp_ip[rcv_rtp]), reader->udp_port_rtp);
 		udp_sock_rtp->flush();
 	}
+	else if (ba_udp_rtp.at(3) == 0x28) // disconnect
+	{		
+		qDebug() << "rtp Disconnect";
+	}
 	else 
 	{
-		qDebug() << rcv_rtp << ba_udp_rtp.length();
-		if (rcv_rtp == 0)
+//		qDebug() << ba_udp_rtp.toHex();
+//		qDebug() << rcv_rtp << ba_udp_rtp.length();
+		if (ba_udp_rtp.length() == 520)
 		{
+			if (rcv_rtp == 0)
+			{
 			
-			uint16_t temp_16[480];
-			for (int i = 0; i < 480; i++)
-				temp_16[i] = static_cast<quint16>(MuLaw_Decode(static_cast<qint8>(ba_udp_rtp.at(i + 40))));
+				uint16_t temp_16[480];
+				for (int i = 0; i < 480; i++)
+					temp_16[i] = static_cast<quint16>(MuLaw_Decode(static_cast<qint8>(ba_udp_rtp.at(i + 40))));
 			
-			sound->frames = snd_pcm_writei(sound->handle_play, temp_16, 480);
+				sound->frames = snd_pcm_writei(sound->handle_play, temp_16, 480);
 			
-			if (sound->frames < 0)
-				sound->frames = snd_pcm_recover(sound->handle_play, sound->frames, 0);
+				if (sound->frames < 0)
+					sound->frames = snd_pcm_recover(sound->handle_play, sound->frames, 0);
+			}
 		}
 	}
 

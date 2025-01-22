@@ -28,7 +28,8 @@ class Udp : public QObject
 	QByteArray ba_udp_rcp;
 	uint16_t send_req_id = 0;
 	uint16_t rcp_req_id = 0;
-	uint32_t* connection;
+	uint32_t connection[4] {0};
+	bool isRadioInit[4] {0};
 	void checksum(unsigned char *ip);
 	void crc(quint8* p, int len);
 	void radio_init();	

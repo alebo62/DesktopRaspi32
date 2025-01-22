@@ -44,6 +44,7 @@ void Udp::readPendDgrmRcp()
 	}
 	else if (ba_udp_rcp.at(3) == 0x20 || ba_udp_rcp.at(3) == 0x00)
 	{
+		qDebug() << ba_udp_rcp.toHex();
 		if (ba_udp_rcp.at(3) == 0x20)
 		{
 			if (ba_udp_rcp.at(6) == (char)0x83 && ba_udp_rcp.at(7) == 0x04 && ba_udp_rcp.at(12) == 0x04 && ba_udp_rcp.at(13) == 0x01)
@@ -128,6 +129,11 @@ void Udp::readPendDgrmRcp()
 					// result [20]                    // ip[24-21]
 					send_reply(3);
 				}
+				else if ((ba_udp_rcp.at(16) == (char)0xC4) && (ba_udp_rcp.at(17) == (char)0x80) && (isRadioInit[rcv_rcp] == true)) // replay channel changed
+				{
+					// result [20]                    // ip[24-21]
+					//send_reply(3);
+				}
 				else
 				{
 					radio_init();
@@ -148,16 +154,19 @@ void Udp::readPendDgrmRcp()
 	}
 	else if (ba_udp_rcp.at(3) ==  0x24) // connect request
 	{
-		qDebug() << "rcp conn req";
+		qDebug() << "rcp conn req" << ba_udp_rcp.toHex();
 		memcpy((char*)messagesHm785->ack_connect + 4, ba_udp_rcp.data() + 4, 11);
 		udp_sock_rcp->writeDatagram((char*) messagesHm785->ack_connect, 15, QHostAddress(reader->udp_ip[rcv_rcp]), reader->udp_port_rcp);
 		connection[rcv_rcp] = 1;
 	}
 	else if (ba_udp_rcp.at(3) ==  0x28) // disconnect request
 	{
+		qDebug() << "rcp Disconnect";
 		memcpy((char*)messagesHm785->ack_connect + 4, ba_udp_rcp.data() + 4, 11);
 		udp_sock_rcp->writeDatagram((char*) messagesHm785->ack_connect, 15, QHostAddress(reader->udp_ip[rcv_rcp]), reader->udp_port_rcp);
-		connection = 0;
+		connection[rcv_rcp] = 0;
+		isRadioInit[rcv_rcp] = false;
+		send_req_id = 0;
 	}
 	//qDebug() << "udp rx: " << rcv << ba_udp_rcp.size();
 }

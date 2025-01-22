@@ -15,5 +15,10 @@ SettingsReader::SettingsReader(QObject* parent)
 	udp_port_rtp = 3010;
 	udp_port_rcp = 3005;
 	
+	max_chan = new int[udp_num];
+	max_chan[0] = 3;
+	max_chan[1] = 3;
+	
+	
 }
 	

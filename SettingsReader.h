@@ -15,5 +15,6 @@ public: explicit SettingsReader(QObject* parent = nullptr);
 	ushort udp_port_rtp;
 	ushort udp_port_rcp;
 	QString onega_ip;
+	int* max_chan;
 	
 };

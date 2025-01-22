@@ -977,7 +977,7 @@
            <attribute name="title">
             <string>Радио1</string>
            </attribute>
-           <widget class="QLCDNumber" name="lcdNumber_12">
+           <widget class="QLCDNumber" name="lcdNumber_Chan">
             <property name="geometry">
              <rect>
               <x>20</x>
@@ -1018,7 +1018,7 @@
              <string>PTT</string>
             </property>
            </widget>
-           <widget class="QPushButton" name="pushButton_140">
+           <widget class="QPushButton" name="pushButton_ChDwn">
             <property name="geometry">
              <rect>
               <x>480</x>
@@ -1036,7 +1036,7 @@
              <string>-</string>
             </property>
            </widget>
-           <widget class="QPushButton" name="pushButton_141">
+           <widget class="QPushButton" name="pushButton_ChUp">
             <property name="geometry">
              <rect>
               <x>690</x>

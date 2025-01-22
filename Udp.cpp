@@ -20,7 +20,7 @@ Udp::Udp(QObject *parent)
 	udp_sock_rcp->bind(QHostAddress(reader->onega_ip), reader->udp_port_rcp);
 	connect(udp_sock_rcp, SIGNAL(readyRead()), this, SLOT(readPendDgrmRcp()));
 	
-	connection = new u_int32_t [reader->udp_num];
+	//connection = new u_int32_t [reader->udp_num];
 }
 
 
