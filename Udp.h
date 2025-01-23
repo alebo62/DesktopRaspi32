@@ -8,6 +8,8 @@
 #include  <Sound.h>
 #include "alsa/asoundlib.h"
 
+
+//extern MainWindow* w;
 extern SettingsReader* reader;
 extern Sound* sound;
 class Udp : public QObject
@@ -17,8 +19,7 @@ class Udp : public QObject
 	Messages_HM785* messagesHm785;
 
 	quint8 send_command[256] = { 0x32, 0x42, 0, 0, 0, 0 };	
-	quint8 conn[12] { 0x7e, 4, 0, 0xfe, 0x20, 0x10, 0, 0, 0, 0x0c, 0x60, 0xe1 }
-	;
+	quint8 conn[12] { 0x7e, 4, 0, 0xfe, 0x20, 0x10, 0, 0, 0, 0x0c, 0x60, 0xe1 };
 	QTimer* radioConn_tim;
 	quint32 rcv_rcp;
 	quint32 rcv_rtp;

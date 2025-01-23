@@ -32,7 +32,9 @@ class MainWindow : public QMainWindow
 	~MainWindow();
 	QTimer* hid_timer;
 	hid_device *handle;
-
+    
+	// Что бы не проводить процедуку инициализации радиост. после перекл.каналов
+	qint32 chan_change_state	{-1}	;
 
 	protected slots :
 	    void ButtonClicked();

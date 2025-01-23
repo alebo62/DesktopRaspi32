@@ -51,5 +51,69 @@ public:
 	quint8 analog_audio_rx[8] { 2, 0xD6, 0, 1, 0, 1, 0, 3 };
 	quint8 analog_audio_pgain[10] { 2, 0xDC, 0, 4, 0, 0, 0, 0, 0, 3 };
 	quint8 analog_audio_route[10] { 2, 0x10, 0x04, 3, 0, 1, 1, 1, 0, 3 };
+	
+	quint16 seq_num = 0;
+	//quint32 ts_current;
+	//quint32 period;
+	quint32 timestamp = 0;
+	quint8 aud_tx[28 + 480] = {
+		0x90, 
+		0x00,
+		0, 
+		0x44,
+		// 14-15  seq number
+		0,
+		 0, 
+		0, 
+		0x44,
+		 //  16-19 timestamp
+		0, 
+		0,
+		 0,
+		 0,
+		// 20-23 Synchronization source (SSRC) identifier
+		         // Contributing source (CSRC) identifiers (variable 0-15 items 32bits each)
+
+		0x00, 
+		0x15, // 24-25 16 bit CODE_TYPE Standard DMR Header Extension
+		0,
+		 3,
+		// 26-27 Num 32bit words
+		0,
+		// 0x21 last packet
+		0, 
+		0, 
+		0,
+		//source
+		     0, 
+		0,
+		// dest
+		     0,
+		// call type 0-1gr
+		     0,
+		 0,
+		 0, 
+		0, 
+		0, 
+		0, 
+		0,
+		 0, 
+		0,
+		//                       0,// 28  Super frame number
+		//                       0,0,1, // 29-31 DST_DMR_ID
+		//                       //0, // 32reserved
+		//                       0,3,0xe8, // 33-35 SRC_DMR_ID
+		//                       0,
+		//                       0,0,0,0, // 36-39 BaseStation_ID
+		//                        // 40 Proto Major + ProtoMinor
+		//                       0x10, // 41 ColorCode + FadingControl
+		//                       0x01, // 42 DatoType(0) + CallType (0100)DMR+GrCall+NotCallAlert+Reserved
+		//                                               0,// 43  2-2-4 Source+StartReason+EndReason
+		//                       0, // 44  Service Options
+		//                       0, // 45 Signal Quality
+		//                       0, // 46 4-4 Reserved + Encryption
+		//                       0, // 47 Key Id
+		//                       0,0,0,0 // 48-51 Init Vector
+	};
 		
 };

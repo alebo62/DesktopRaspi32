@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
 	dbase = new DataBase();
 	sound = new Sound();
 	udp = new Udp();
-	w = new MainWindow;
+	w = new MainWindow();
 	
 	MyThreadHid  thread_hid;
 	thread_hid.start();

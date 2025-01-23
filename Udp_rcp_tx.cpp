@@ -30,7 +30,7 @@ void Udp::make_stop_call(qint32 tx_rcp)
 
 void Udp::select_channel(qint32 channel, qint32 radio_number, qint32 zone /* = 1 */)
 {
-	messagesHm785->zone_ch[5] = 0x02; // 0x00*Set  0x01*Read  0x02*Set without saving 
+	messagesHm785->zone_ch[5] = 0x00; // 0x00*Set  0x01*Read  0x02*Set without saving 
 	
 	messagesHm785->zone_ch[6] = zone;
 	messagesHm785->zone_ch[8] = channel;

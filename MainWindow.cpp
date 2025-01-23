@@ -18,11 +18,11 @@ MainWindow::MainWindow(QWidget *parent) :
 		qDebug() << "open";
 	
 	
-	connect(ui->pushButton_ptt, SIGNAL(pressed()), this, SLOT(ptt_pressed()));
-	connect(ui->pushButton_ptt, SIGNAL(released()), this, SLOT(ptt_released()));
+	connect(ui->pushButton_ptt1, SIGNAL(pressed()), this, SLOT(ptt_pressed()));
+	connect(ui->pushButton_ptt1, SIGNAL(released()), this, SLOT(ptt_released()));
 	
-	connect(ui->pushButton_ChUp,  SIGNAL(clicked()),  this, SLOT(ch_up_slot()));
-	connect(ui->pushButton_ChDwn, SIGNAL(clicked()), this,  SLOT(ch_dwn_slot()));
+	connect(ui->pushButton_ChUp1,  SIGNAL(clicked()),  this, SLOT(ch_up_slot()));
+	connect(ui->pushButton_ChDwn1, SIGNAL(clicked()), this,  SLOT(ch_dwn_slot()));
 
 	//hid_close(handle);
 

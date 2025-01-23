@@ -1,5 +1,8 @@
 #include "Udp.h"
 #include  <QDebug>
+#include "MainWindow.h"
+
+extern MainWindow* w;
 
 QByteArray ba_udp_tst = { "hello" };
 void Udp::readPendDgrmRcp()
@@ -20,18 +23,24 @@ void Udp::readPendDgrmRcp()
 		if (connection[rcv_rcp] == 2)
 		{
 			udp_sock_rcp->writeDatagram((char*) messagesHm785->ack_heatbeat, 6, QHostAddress(reader->udp_ip[rcv_rcp]), reader->udp_port_rcp);
-			//radioConn_tim->start();
 			//qDebug() << "heartbeat";
 		}
 		else if (connection[rcv_rcp] == 1)
 		{
 			connection[rcv_rcp] = 2;
-			checksum(messagesHm785->zone_ch);
-			send_command[4] = send_req_id >> 8;
-			send_command[5] = send_req_id & 0xFF;
-			memcpy(send_command + 6, messagesHm785->zone_ch, messagesHm785->zone_ch[3] + 7);
-			udp_sock_rcp->writeDatagram((char*)send_command, messagesHm785->zone_ch[3] + 7 + 6, QHostAddress(reader->udp_ip[rcv_rcp]), reader->udp_port_rcp);
-			send_req_id++;
+			if (rcv_rcp != w->chan_change_state) // This is not channel changed
+			{
+				checksum(messagesHm785->zone_ch);
+				send_command[4] = send_req_id >> 8;
+				send_command[5] = send_req_id & 0xFF;
+				memcpy(send_command + 6, messagesHm785->zone_ch, messagesHm785->zone_ch[3] + 7);
+				udp_sock_rcp->writeDatagram((char*)send_command, messagesHm785->zone_ch[3] + 7 + 6, QHostAddress(reader->udp_ip[rcv_rcp]), reader->udp_port_rcp);
+				send_req_id++;
+			}
+			else
+			{
+				w->chan_change_state = -1; // default state				
+			}
 		}
 		else if (connection[rcv_rcp] == 0)
 		{
@@ -131,12 +140,15 @@ void Udp::readPendDgrmRcp()
 				}
 				else if ((ba_udp_rcp.at(16) == (char)0xC4) && (ba_udp_rcp.at(17) == (char)0x80) && (isRadioInit[rcv_rcp] == true)) // replay channel changed
 				{
-					// result [20]                    // ip[24-21]
-					//send_reply(3);
+					// result [20]
+					
 				}
 				else
 				{
-					radio_init();
+					if (rcv_rcp != w->chan_change_state)// This is not channel change
+					{
+						radio_init(); // Udp_rcp_conn.cpp
+				    }
 				}
 			}
 			else 
@@ -162,11 +174,19 @@ void Udp::readPendDgrmRcp()
 	else if (ba_udp_rcp.at(3) ==  0x28) // disconnect request
 	{
 		qDebug() << "rcp Disconnect";
-		memcpy((char*)messagesHm785->ack_connect + 4, ba_udp_rcp.data() + 4, 11);
-		udp_sock_rcp->writeDatagram((char*) messagesHm785->ack_connect, 15, QHostAddress(reader->udp_ip[rcv_rcp]), reader->udp_port_rcp);
-		connection[rcv_rcp] = 0;
-		isRadioInit[rcv_rcp] = false;
-		send_req_id = 0;
+		//memcpy((char*)messagesHm785->ack_connect + 4, ba_udp_rcp.data() + 4, 11);
+		//udp_sock_rcp->writeDatagram((char*) messagesHm785->ack_connect, 15, QHostAddress(reader->udp_ip[rcv_rcp]), reader->udp_port_rcp);
+		if (rcv_rcp != w->chan_change_state)
+		{
+			connection[rcv_rcp] = 0;
+			isRadioInit[rcv_rcp] = false;
+			send_req_id = 0;
+		}
+		else
+		{
+			// Wait connect request!			
+		}
+		
 	}
 	//qDebug() << "udp rx: " << rcv << ba_udp_rcp.size();
 }
