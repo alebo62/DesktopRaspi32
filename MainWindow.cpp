@@ -50,52 +50,52 @@ void MainWindow::ButtonClicked()
 
 void MainWindow::gr1_slot()
 {
-	int i = sender()->objectName().last(1).toInt();
+	int i = tab->currentIndex();
 	
 }
 
 
 void MainWindow::gr2_slot()
 {
-	int i = sender()->objectName().last(1).toInt();
+	int i = tab->currentIndex();
 	
 }
 
 
 void MainWindow::gr3_slot()
 {
-	int i = sender()->objectName().last(1).toInt();
+	int i = tab->currentIndex();
 	
 }
 
 void MainWindow::gr4_slot()
 {
-	int i = sender()->objectName().last(1).toInt();
+	int i = tab->currentIndex();
 	
 }
 
 void MainWindow::ab1_slot()
 {
-	int i = sender()->objectName().last(1).toInt();
+	int i = tab->currentIndex();
 	
 }
 
 
 void MainWindow::ab2_slot()
 {
-	int i = sender()->objectName().last(1).toInt();
+	int i = tab->currentIndex();
 	
 }
 
 
 void MainWindow::ab3_slot()
 {
-	int i = sender()->objectName().last(1).toInt();
+	int i = tab->currentIndex();
 	
 }
 
 void MainWindow::ab4_slot()
 {
-	int i = sender()->objectName().last(1).toInt();
+	int i = tab->currentIndex();
 	
 }
