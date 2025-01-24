@@ -17,19 +17,17 @@ MainWindow::MainWindow(QWidget *parent) :
 	else
 		qDebug() << "open";
 	
-	
-	connect(ui->pushButton_ptt1, SIGNAL(pressed()), this, SLOT(ptt_pressed()));
-	connect(ui->pushButton_ptt1, SIGNAL(released()), this, SLOT(ptt_released()));
-	
-	connect(ui->pushButton_ChUp1,  SIGNAL(clicked()),  this, SLOT(ch_up_slot()));
-	connect(ui->pushButton_ChDwn1, SIGNAL(clicked()), this,  SLOT(ch_dwn_slot()));
-
+			
 	//hid_close(handle);
 
 	//hid_timer->start(200);
 
 	//res = hid_read(handle, buffer, 1);
 	//hid_write(handle, buffer, 1);
+	
+	interface_init();
+	
+	sig_slot_init();
 
 }
 
@@ -48,3 +46,56 @@ void MainWindow::ButtonClicked()
 }
 
 
+
+
+void MainWindow::gr1_slot()
+{
+	int i = sender()->objectName().last(1).toInt();
+	
+}
+
+
+void MainWindow::gr2_slot()
+{
+	int i = sender()->objectName().last(1).toInt();
+	
+}
+
+
+void MainWindow::gr3_slot()
+{
+	int i = sender()->objectName().last(1).toInt();
+	
+}
+
+void MainWindow::gr4_slot()
+{
+	int i = sender()->objectName().last(1).toInt();
+	
+}
+
+void MainWindow::ab1_slot()
+{
+	int i = sender()->objectName().last(1).toInt();
+	
+}
+
+
+void MainWindow::ab2_slot()
+{
+	int i = sender()->objectName().last(1).toInt();
+	
+}
+
+
+void MainWindow::ab3_slot()
+{
+	int i = sender()->objectName().last(1).toInt();
+	
+}
+
+void MainWindow::ab4_slot()
+{
+	int i = sender()->objectName().last(1).toInt();
+	
+}
