@@ -6,6 +6,7 @@
 #include <QPushButton>
 #include <QGroupBox>
 #include <QComboBox>
+#include <vector>
 
 #include <QTimer>
 #include "hidapi/hidapi.h"

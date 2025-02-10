@@ -1118,7 +1118,7 @@
             <property name="title">
              <string>Групповые </string>
             </property>
-            <widget class="QComboBox" name="comboBox_19">
+            <widget class="QComboBox" name="comboBoxGr1">
              <property name="geometry">
               <rect>
                <x>10</x>
@@ -1128,7 +1128,7 @@
               </rect>
              </property>
             </widget>
-            <widget class="QPushButton" name="pushButton_146">
+            <widget class="QPushButton" name="pushButtonGr11">
              <property name="geometry">
               <rect>
                <x>10</x>
@@ -1141,7 +1141,7 @@
               <string>Группа 1</string>
              </property>
             </widget>
-            <widget class="QPushButton" name="pushButton_147">
+            <widget class="QPushButton" name="pushButtonGr12">
              <property name="geometry">
               <rect>
                <x>210</x>
@@ -1154,7 +1154,7 @@
               <string>Группа 2</string>
              </property>
             </widget>
-            <widget class="QPushButton" name="pushButton_148">
+            <widget class="QPushButton" name="pushButtonGr13">
              <property name="geometry">
               <rect>
                <x>10</x>
@@ -1167,7 +1167,7 @@
               <string>Группа 3</string>
              </property>
             </widget>
-            <widget class="QPushButton" name="pushButton_149">
+            <widget class="QPushButton" name="pushButtonGr14">
              <property name="geometry">
               <rect>
                <x>210</x>
@@ -1193,7 +1193,7 @@
             <property name="title">
              <string>Индивидуальные</string>
             </property>
-            <widget class="QComboBox" name="comboBox_20">
+            <widget class="QComboBox" name="comboBoxAb1">
              <property name="geometry">
               <rect>
                <x>10</x>
@@ -1203,7 +1203,7 @@
               </rect>
              </property>
             </widget>
-            <widget class="QPushButton" name="pushButton_150">
+            <widget class="QPushButton" name="pushButtonAb11">
              <property name="geometry">
               <rect>
                <x>10</x>
@@ -1216,7 +1216,7 @@
               <string>Абонент 1</string>
              </property>
             </widget>
-            <widget class="QPushButton" name="pushButton_151">
+            <widget class="QPushButton" name="pushButtonAb12">
              <property name="geometry">
               <rect>
                <x>210</x>
@@ -1226,10 +1226,10 @@
               </rect>
              </property>
              <property name="text">
-              <string>Абонент 1</string>
+              <string>Абонент 2</string>
              </property>
             </widget>
-            <widget class="QPushButton" name="pushButton_152">
+            <widget class="QPushButton" name="pushButtonAb14">
              <property name="geometry">
               <rect>
                <x>210</x>
@@ -1239,10 +1239,10 @@
               </rect>
              </property>
              <property name="text">
-              <string>Абонент 1</string>
+              <string>Абонент 4</string>
              </property>
             </widget>
-            <widget class="QPushButton" name="pushButton_153">
+            <widget class="QPushButton" name="pushButtonAb13">
              <property name="geometry">
               <rect>
                <x>10</x>
@@ -1252,7 +1252,7 @@
               </rect>
              </property>
              <property name="text">
-              <string>Абонент 1</string>
+              <string>Абонент 3</string>
              </property>
             </widget>
            </widget>
@@ -1448,7 +1448,7 @@
       <property name="title">
        <string>Групповые </string>
       </property>
-      <widget class="QComboBox" name="comboBox_21">
+      <widget class="QComboBox" name="comboBoxGr2">
        <property name="geometry">
         <rect>
          <x>10</x>

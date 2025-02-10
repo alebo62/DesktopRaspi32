@@ -11,7 +11,7 @@ void MainWindow::interface_init()
 	QFont fontPb;
 	fontPb.setPointSize(12);
 	
-	for (int i = 0; i < reader->udp_num; i++)
+	for (int i = 0; i < reader->server.directions; i++)
 	{
 		wdg[i] = new QWidget();
 		{
