@@ -127,6 +127,9 @@
                   <string>MainWindow.cpp</string>
                   <string>MainWindow_ChanSelect.cpp</string>
                   <string>MainWindow_Ptt.cpp</string>
+                  <string>MainWindow_Iface.cpp</string>
+                  <string>MainWindowSigSlot.cpp</string>
+                  <string>MainWindow_loadContacts.cpp</string>
                 </Files>
                 <RelatedFilterName>Source Files</RelatedFilterName>
               </VirtualSourceFolder>
@@ -228,7 +231,7 @@
     <GenerateCtrlBreakInsteadOfCtrlC>false</GenerateCtrlBreakInsteadOfCtrlC>
     <SuppressArgumentVariablesCheck>false</SuppressArgumentVariablesCheck>
     <DeploymentTargetPath>/home/pi/$(TargetFileName)</DeploymentTargetPath>
-    <X11WindowMode>Remote</X11WindowMode>
+    <X11WindowMode>Local</X11WindowMode>
     <KeepConsoleAfterExit>false</KeepConsoleAfterExit>
     <RunGDBUnderSudo>false</RunGDBUnderSudo>
     <DeploymentMode>Auto</DeploymentMode>

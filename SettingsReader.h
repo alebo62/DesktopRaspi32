@@ -12,6 +12,12 @@ class SettingsReader : public QObject
 	void read_server_settings();
 
 	void read_radios_settings(QString s, int i);
+	
+	void read_favorite();
+	
+	void write_favorite();
+	
+	void display_favorites();
 public: 
 	explicit SettingsReader(QObject* parent = nullptr);
 	
@@ -52,4 +58,11 @@ public:
 	};
 	Server server;
 	std::array<Radio, 4> radio;
+	
+	
+	// std::vector<int>								избранные для канала до 4-х
+	// std::vector<std::vector<int>>				избранные для радиостанции до 4-х
+	// std::vector<std::vector<std::vector<int>>>	избранные для всех радиостанций    
+	std::vector<std::vector<std::vector<int>>> favForAllRadio;
+
 };

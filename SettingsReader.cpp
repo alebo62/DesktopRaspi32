@@ -27,6 +27,7 @@ SettingsReader::SettingsReader(QObject* parent)
 		read_radios_settings(s, i);
 	}
 	
+	read_favorite();
 }
 
 
@@ -113,3 +114,64 @@ void SettingsReader::read_radios_settings(QString s, int i)
 }
 
 
+void SettingsReader::read_favorite()
+{
+	favForAllRadio.resize(server.directions);
+	
+	for (size_t i = 0; i < server.directions; i++)
+	{
+		favForAllRadio[i].resize(radio[i].channels);	
+	}
+	
+	
+	QFile file;
+	
+	file.setFileName("favorite.dat");
+	
+	if (file.open(QIODevice::ReadOnly | QIODevice::Text))
+	{
+		QString s;
+		s = file.readAll();
+		if (!s.isEmpty())
+		{
+			QStringList sl = s.split('\n');
+			for (size_t i = 0; i < sl.length(); i++)
+			{
+				QStringList sl_in = sl[i].split(',');
+				favForAllRadio[sl_in.at(0).toInt()][sl_in.at(1).toInt()].push_back(sl_in.at(2).toInt());
+			}
+		}
+	
+		file.close();
+	}
+}
+
+void SettingsReader::write_favorite()
+{
+	QFile file;
+	
+	QTextStream stream;
+
+	file.setFileName("favorite.dat");
+	
+	if (file.open(QIODevice::WriteOnly | QIODevice::Text))
+	{
+		for (size_t i = 0; i < server.directions; i++)
+		{
+			for (size_t j = 0; j < radio[i].channels; j++)
+			{
+				for (size_t k = 0; k < favForAllRadio[i][j].size(); k++)
+				{
+					stream << i << "," << j << "," << favForAllRadio[i][j][k] << "\n";
+				} 
+			}				
+		}	
+		
+		file.close();
+	}
+}
+
+void SettingsReader::display_favorites()
+{
+	
+}

@@ -8,6 +8,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+	tab = new QTabWidget();
+	
+	connect(tab, &QTabWidget::tabBarClicked, this, &MainWindow::tabBarClicked_slot);
 	
 //	int res = hid_init();
 //	
@@ -24,29 +27,14 @@ MainWindow::MainWindow(QWidget *parent) :
 
 	//res = hid_read(handle, buffer, 1);
 	//hid_write(handle, buffer, 1);
-	
-	
-	interface_init();
-	
-	for (size_t i = 0; i < reader->server.directions; i++)
-	{
-		for (size_t j = 0; j < reader->radio[i].num_contacts_gr; j++)
-		{
-			combo_gr[i]->addItem(reader->radio[i].contact_gr[j].name);	
-		}
 		
-		for (size_t j = 0; j < reader->radio[i].num_contacts_ab; j++)
-		{
-			combo_ab[i]->addItem(reader->radio[i].contact_ab[j].name); 
-		}
-	}
-	
+	interface_init();
+		
+	for (size_t i{ 0 }; i < reader->server.directions; i++)
+		load_contacts(i, 1);
+		
 	sig_slot_init();
 	
-	
-	
-	//ui->comboBoxGr1->
-
 }
 
 MainWindow::~MainWindow()

@@ -32,6 +32,11 @@ enum CallTypes {
 class MainWindow : public QMainWindow
 {
 	Q_OBJECT
+		
+	void load_contacts(int current_radio, int channel);
+	
+	int current_index{0};
+	
     
 	public :
 	    explicit MainWindow(QWidget *parent = 0);
@@ -73,7 +78,8 @@ class MainWindow : public QMainWindow
 private:
 	Ui::MainWindow *ui;
 	
-public slots :
+	public slots :
+		void tabBarClicked_slot(int idx);
 		void slot_ptt(int);
 	void ptt_pressed();
 	void ptt_released();

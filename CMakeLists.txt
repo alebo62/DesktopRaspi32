@@ -11,7 +11,7 @@ set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTORCC ON)
 find_package(Qt6 COMPONENTS Core Widgets Network Sql REQUIRED)
 
-add_executable(DesktopRaspi32 DesktopRaspi32.cpp MainWindow.cpp MainWindow.ui Udp.cpp Udp_aulaw.cpp Udp_call_decoding.cpp Udp_checksum.cpp Udp_pressPtt.cpp Udp_rcp.cpp Udp_rcp_conn.cpp Udp_rtp_rx.cpp Udp_send_call_report.cpp DataBase.cpp messages_hm785.cpp SettingsReader.cpp Sound.cpp DataBase.h MainWindow.h messages_hm785.h SettingsReader.h Sound.h Udp.h MyThreadMic.h MyThreadHid.h Udp_rtp_tx.cpp Udp_rcp_tx.cpp MainWindow_ChanSelect.cpp MainWindow_Ptt.cpp MainWindow_Iface.cpp MainWindowSigSlot.cpp)
+add_executable(DesktopRaspi32 DesktopRaspi32.cpp MainWindow.cpp MainWindow.ui Udp.cpp Udp_aulaw.cpp Udp_call_decoding.cpp Udp_checksum.cpp Udp_pressPtt.cpp Udp_rcp.cpp Udp_rcp_conn.cpp Udp_rtp_rx.cpp Udp_send_call_report.cpp DataBase.cpp messages_hm785.cpp SettingsReader.cpp Sound.cpp DataBase.h MainWindow.h messages_hm785.h SettingsReader.h Sound.h Udp.h MyThreadMic.h MyThreadHid.h Udp_rtp_tx.cpp Udp_rcp_tx.cpp MainWindow_ChanSelect.cpp MainWindow_Ptt.cpp MainWindow_Iface.cpp MainWindowSigSlot.cpp MainWindow_loadContacts.cpp)
 target_link_libraries(DesktopRaspi32 Qt6::Widgets Qt6::Network Qt6::Sql "${LIBRARIES_FROM_REFERENCES}")
 
 target_link_libraries(DesktopRaspi32  -lhidapi-libusb)

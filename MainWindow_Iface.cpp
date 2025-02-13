@@ -2,7 +2,7 @@
 #include <QCoreApplication>
 void MainWindow::interface_init()
 {
-	tab = new QTabWidget();
+	
 
 	QFont font0;
 	font0.setPointSize(20);
@@ -101,8 +101,18 @@ void MainWindow::interface_init()
 			pb_ab4[i]->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
 			pb_add_ch[i]->setText(QString());
 		}
-		tab->addTab(wdg[i], "Радио" + QString::number(i));
+		tab->addTab(wdg[i], reader->radio[i].name); // заголовки табов
 	}
 
-	setCentralWidget(tab);	
+	setCentralWidget(tab);
+	
+}
+
+
+void MainWindow::tabBarClicked_slot(int idx)
+{
+	if (idx != current_index)
+	{
+		current_index = idx;	
+	}
 }
