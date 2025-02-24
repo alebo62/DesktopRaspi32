@@ -133,6 +133,22 @@
                 </Files>
                 <RelatedFilterName>Source Files</RelatedFilterName>
               </VirtualSourceFolder>
+              <VirtualSourceFolder>
+                <Name>Opus</Name>
+                <Subfolders />
+                <Files>
+                  <string>opuscodec.cpp</string>
+                </Files>
+                <RelatedFilterName>Source Files</RelatedFilterName>
+              </VirtualSourceFolder>
+              <VirtualSourceFolder>
+                <Name>DataBase</Name>
+                <Subfolders />
+                <Files>
+                  <string>databasewriter.cpp</string>
+                </Files>
+                <RelatedFilterName>Source Files</RelatedFilterName>
+              </VirtualSourceFolder>
             </Subfolders>
             <Files />
           </RootVirtualSourceFolder>

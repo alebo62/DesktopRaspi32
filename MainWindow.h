@@ -7,6 +7,7 @@
 #include <QGroupBox>
 #include <QComboBox>
 #include <vector>
+#include <QDateTime>
 
 #include <QTimer>
 #include "hidapi/hidapi.h"
@@ -27,6 +28,15 @@ enum CallTypes {
 	eEmergPrivCall = 4,
 	eAllCall       = 5,
 	eEmergAllCall  = 6,
+};
+
+struct Record
+{
+	QDateTime m_date;
+	int m_who;
+	int m_whoom;
+	int m_type;
+	QByteArray mic_buf;
 };
 
 class MainWindow : public QMainWindow
