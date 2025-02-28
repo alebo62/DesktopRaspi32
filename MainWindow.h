@@ -47,7 +47,10 @@ class MainWindow : public QMainWindow
 	
 	int current_index{0};
 	
-    
+	QPalette palet;
+	QPalette new_palet;
+	
+	QTimer* pb_add_Timer;
 	public :
 	    explicit MainWindow(QWidget *parent = 0);
 	~MainWindow();
@@ -89,8 +92,10 @@ private:
 	Ui::MainWindow *ui;
 	
 	public slots :
-		void tabBarClicked_slot(int idx);
-		void slot_ptt(int);
+	
+	void pb_add_Timer_slot();
+	void tabBarClicked_slot(int idx);
+	void slot_ptt(int);
 	void ptt_pressed();
 	void ptt_released();
 	void ch_up_slot();
@@ -102,8 +107,13 @@ private:
 	void ab1_slot();
 	void ab2_slot();
 	void ab3_slot();
-	void ab4_slot();
-	
+	void ab4_slot();	
+	void display_favorites(int radio, int channel);
+	void write_favorite();
+	void add_ch_click_slot();
+	void add_ch_release_slot();
+	void cb_ab_slot(const QString&);
+	void cb_gr_slot(const QString&);
 	
 signals :
 	void sig_ptt(int);

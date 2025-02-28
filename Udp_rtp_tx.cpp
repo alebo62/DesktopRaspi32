@@ -4,7 +4,7 @@ qint16 pre_mu_buffer[160];
 qint8 mu_buffer[160];
 char mic_buffer[320];
 
-
+// От MyThreadMic.h  принимаем сигнал sig_udp , делаем кодирование muLaw и отправляем по udp
 void Udp::slot_udp()
 {
 	memcpy((char*)pre_mu_buffer, sound->mic_buffer, 320);

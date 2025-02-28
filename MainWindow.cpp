@@ -10,6 +10,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 	tab = new QTabWidget();
 	
+	// Change the radio signal-slot	
+	
 	connect(tab, &QTabWidget::tabBarClicked, this, &MainWindow::tabBarClicked_slot);
 	
 //	int res = hid_init();
@@ -27,8 +29,14 @@ MainWindow::MainWindow(QWidget *parent) :
 
 	//res = hid_read(handle, buffer, 1);
 	//hid_write(handle, buffer, 1);
+	
+	pb_add_Timer = new QTimer(); 
 		
 	interface_init();
+	
+	palet = pb_add_ch[0]->palette();
+	new_palet.setColor(pb_add_ch[current_index]->backgroundRole(), QColor(100,200,100,0));	
+	
 		
 	for (size_t i{ 0 }; i < reader->server.directions; i++)
 		load_contacts(i, 1);
@@ -54,54 +62,3 @@ void MainWindow::ButtonClicked()
 
 
 
-void MainWindow::gr1_slot()
-{
-	//int i = tab->currentIndex();
-	
-}
-
-
-void MainWindow::gr2_slot()
-{
-	//int i = tab->currentIndex();
-	
-}
-
-
-void MainWindow::gr3_slot()
-{
-	//int i = tab->currentIndex();
-	
-}
-
-void MainWindow::gr4_slot()
-{
-	//int i = tab->currentIndex();
-	
-}
-
-void MainWindow::ab1_slot()
-{
-	//int i = tab->currentIndex();
-	
-}
-
-
-void MainWindow::ab2_slot()
-{
-	//int i = tab->currentIndex();
-	
-}
-
-
-void MainWindow::ab3_slot()
-{
-	//int i = tab->currentIndex();
-	
-}
-
-void MainWindow::ab4_slot()
-{
-	//int i = tab->currentIndex();
-	
-}

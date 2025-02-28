@@ -8,7 +8,7 @@
 #include "alsa/asoundlib.h" 
 #include "Sound.h"
 #include "Udp.h"
-#include "DataBase.h"
+#include "databasewriter.h"
 #include "SettingsReader.h"
 #include "MyThreadMic.h"
 #include "MyThreadHid.h"
@@ -17,7 +17,7 @@
 MainWindow* w;
 Sound* sound;
 Udp* udp;
-DataBase* dbase;
+DataBaseWriter* dbWriter;
 SettingsReader* reader; 
 
 int main(int argc, char *argv[])
@@ -25,7 +25,15 @@ int main(int argc, char *argv[])
 	QApplication a(argc, argv);
 	
 	reader = new SettingsReader();
-//	dbase = new DataBase();
+//	if (DataBaseWriter::createConnection())
+//		qDebug() << "Connect to DB";
+//	else
+//	{
+//		qDebug() << "No conn to DB";
+//		return -1;
+//	}
+		
+//	dbWriter = new DataBaseWriter();
 //	sound = new Sound();
 //	udp = new Udp();
 	w = new MainWindow();

@@ -1,5 +1,6 @@
 #include "SettingsReader.h"
 #include <QDebug>
+#include "MainWindow.h"
 
 SettingsReader::SettingsReader(QObject* parent)
 	: QObject(parent)
@@ -57,7 +58,7 @@ void SettingsReader::read_server_settings()
 	else
 	{
 		qDebug() << file.fileName() << "not found";
-		exit(1);
+		//exit(1);
 	}
 }
 	
@@ -116,11 +117,14 @@ void SettingsReader::read_radios_settings(QString s, int i)
 
 void SettingsReader::read_favorite()
 {
-	favForAllRadio.resize(server.directions);
+	// vector<vector<vector<int>>>  radio,channel,contact_num
+	favForAllRadioGr.resize(server.directions);
+	favForAllRadioAb.resize(server.directions);
 	
 	for (size_t i = 0; i < server.directions; i++)
 	{
-		favForAllRadio[i].resize(radio[i].channels);	
+		favForAllRadioGr[i].resize(radio[i].channels);
+		favForAllRadioAb[i].resize(radio[i].channels);
 	}
 	
 	
@@ -131,14 +135,25 @@ void SettingsReader::read_favorite()
 	if (file.open(QIODevice::ReadOnly | QIODevice::Text))
 	{
 		QString s;
+		
 		s = file.readAll();
+		
 		if (!s.isEmpty())
 		{
 			QStringList sl = s.split('\n');
+			
 			for (size_t i = 0; i < sl.length(); i++)
 			{
 				QStringList sl_in = sl[i].split(',');
-				favForAllRadio[sl_in.at(0).toInt()][sl_in.at(1).toInt()].push_back(sl_in.at(2).toInt());
+				qDebug() << sl_in.size();
+				if (sl_in.size() == 4)
+				{
+					if (sl_in.at(0) == "g")
+						favForAllRadioGr[sl_in.at(1).toInt()][sl_in.at(2).toInt()].push_back(sl_in.at(3).toInt());
+						//                  radio                 channel                     contact number
+					else
+						favForAllRadioAb[sl_in.at(1).toInt()][sl_in.at(2).toInt()].push_back(sl_in.at(3).toInt());
+				}				
 			}
 		}
 	
@@ -146,32 +161,5 @@ void SettingsReader::read_favorite()
 	}
 }
 
-void SettingsReader::write_favorite()
-{
-	QFile file;
-	
-	QTextStream stream;
 
-	file.setFileName("favorite.dat");
-	
-	if (file.open(QIODevice::WriteOnly | QIODevice::Text))
-	{
-		for (size_t i = 0; i < server.directions; i++)
-		{
-			for (size_t j = 0; j < radio[i].channels; j++)
-			{
-				for (size_t k = 0; k < favForAllRadio[i][j].size(); k++)
-				{
-					stream << i << "," << j << "," << favForAllRadio[i][j][k] << "\n";
-				} 
-			}				
-		}	
-		
-		file.close();
-	}
-}
 
-void SettingsReader::display_favorites()
-{
-	
-}

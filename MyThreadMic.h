@@ -18,6 +18,9 @@ class MyThreadMic : public QThread
 	snd_pcm_sframes_t buff_count = 160;
 	int avail;
 
+	
+	// При приеме slot_ptt = 1(от w-главного окна) начинаем выполнять snd_pcm_readi(...) и заполнять sound->mic_buffer и испускаем
+	// сигнал sig_udp() слот которого slot_udp() обрабатываем в Udp_rtp_tx.cpp
 public:
 	void run()
 	{
