@@ -9,6 +9,8 @@ void MainWindow::ch_dwn_slot()
 	{
 		
 		val--;
+
+		current_channel = val;
 		//udp->select_channel(val, 0);//tx_rcp); если нет соединения - зависает!!!
 		lcdNumber[current_index]->display(val);
 		chan_change_state = 0;
@@ -24,6 +26,7 @@ void MainWindow::ch_up_slot()
 	if (val < reader->radio[current_index].channels)
 	{
 		val++;
+		current_channel = val;
 		//udp->select_channel(val, 0);//tx_rcp); если нет соединения - зависает!!!
 		lcdNumber[current_index]->display(val);
 		chan_change_state = 0;

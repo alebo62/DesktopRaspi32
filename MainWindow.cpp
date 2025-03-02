@@ -30,19 +30,22 @@ MainWindow::MainWindow(QWidget *parent) :
 	//res = hid_read(handle, buffer, 1);
 	//hid_write(handle, buffer, 1);
 	
-	pb_add_Timer = new QTimer(); 
+	//pb_add_Timer = new QTimer(); 
 		
 	interface_init();
 	
 	palet = pb_add_ch[0]->palette();
-	new_palet.setColor(pb_add_ch[current_index]->backgroundRole(), QColor(100,200,100,0));	
 	
-		
+	new_palet.setColor(pb_add_ch[current_index]->backgroundRole(), QColor(100,200,100,0));	
+			
 	for (size_t i{ 0 }; i < reader->server.directions; i++)
 		load_contacts(i, 1);
 		
 	sig_slot_init();
-	
+
+	load_favorite();
+
+	write_favorite();
 }
 
 MainWindow::~MainWindow()

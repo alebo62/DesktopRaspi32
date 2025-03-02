@@ -117,49 +117,70 @@ void SettingsReader::read_radios_settings(QString s, int i)
 
 void SettingsReader::read_favorite()
 {
-	// vector<vector<vector<int>>>  radio,channel,contact_num
-	favForAllRadioGr.resize(server.directions);
-	favForAllRadioAb.resize(server.directions);
-	
-	for (size_t i = 0; i < server.directions; i++)
-	{
-		favForAllRadioGr[i].resize(radio[i].channels);
-		favForAllRadioAb[i].resize(radio[i].channels);
-	}
-	
-	
 	QFile file;
-	
+
+	QString line;
+
 	file.setFileName("favorite.dat");
 	
-	if (file.open(QIODevice::ReadOnly | QIODevice::Text))
+	bool res = file.open(QIODevice::ReadOnly | QIODevice::Text);
+
+	if (res)
 	{
-		QString s;
-		
-		s = file.readAll();
-		
-		if (!s.isEmpty())
-		{
-			QStringList sl = s.split('\n');
-			
-			for (size_t i = 0; i < sl.length(); i++)
-			{
-				QStringList sl_in = sl[i].split(',');
-				qDebug() << sl_in.size();
-				if (sl_in.size() == 4)
-				{
-					if (sl_in.at(0) == "g")
-						favForAllRadioGr[sl_in.at(1).toInt()][sl_in.at(2).toInt()].push_back(sl_in.at(3).toInt());
-						//                  radio                 channel                     contact number
-					else
-						favForAllRadioAb[sl_in.at(1).toInt()][sl_in.at(2).toInt()].push_back(sl_in.at(3).toInt());
-				}				
-			}
-		}
-	
+		// radios,r1_ch_num,r2_ch_num,pb_gr1[0],...,pb_ab1[0],...,pb_gr1[0],...
+		line = file.readLine();
+
 		file.close();
+
+		favorite_list = line.split(",");
+		// Дальше работа со списком происходит в MainWindow::loadContacts.cpp
 	}
+	else
+	{
+		std::cerr << "Cannot open file favorite.dat";
+	}
+	// vector<vector<vector<int>>>  radio,channel,contact_num
+//	favForAllRadioGr.resize(server.directions);
+//	favForAllRadioAb.resize(server.directions);
+//	
+//	for (size_t i = 0; i < server.directions; i++)
+//	{
+//		favForAllRadioGr[i].resize(radio[i].channels);
+//		favForAllRadioAb[i].resize(radio[i].channels);
+//	}
+//	
+//	
+//	QFile file;
+//	
+//	file.setFileName("favorite.dat");
+//	
+//	if (file.open(QIODevice::ReadOnly | QIODevice::Text))
+//	{
+//		QString s;
+//		
+//		s = file.readAll();
+//		
+//		if (!s.isEmpty())
+//		{
+//			QStringList sl = s.split('\n');
+//			
+//			for (size_t i = 0; i < sl.length(); i++)
+//			{
+//				QStringList sl_in = sl[i].split(',');
+//				qDebug() << sl_in.size();
+//				if (sl_in.size() == 4)
+//				{
+//					if (sl_in.at(0) == "g")
+//						favForAllRadioGr[sl_in.at(1).toInt()][sl_in.at(2).toInt()].push_back(sl_in.at(3).toInt());
+//						//                  radio                 channel                     contact number
+//					else
+//						favForAllRadioAb[sl_in.at(1).toInt()][sl_in.at(2).toInt()].push_back(sl_in.at(3).toInt());
+//				}				
+//			}
+//		}
+//	
+//		file.close();
+//	}
 }
 
-
-
+// radios,r1_ch_num,r2_ch_num,pb_gr1[0],...,pb_ab1[0],...,pb_gr1[0],...

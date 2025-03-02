@@ -13,6 +13,7 @@
 #include "hidapi/hidapi.h"
 #include "SettingsReader.h"
 #include "Udp.h"
+#include <iostream>
 
 extern SettingsReader* reader;
 extern Udp* udp;
@@ -41,16 +42,25 @@ struct Record
 
 class MainWindow : public QMainWindow
 {
+	enum CALL_TYPE
+	{
+		GROUP,
+		PRIVATE
+	};
+
 	Q_OBJECT
-		
-	void load_contacts(int current_radio, int channel);
-	
+
+		void
+		load_contacts(int current_radio, int channel);
+
 	int current_index{0};
-	
+	int current_channel{0};
+	int current_call_type{3};  // 0-group 1-individ
+
 	QPalette palet;
 	QPalette new_palet;
 	
-	QTimer* pb_add_Timer;
+	QTimer pb_add_Timer;
 	public :
 	    explicit MainWindow(QWidget *parent = 0);
 	~MainWindow();
@@ -59,6 +69,10 @@ class MainWindow : public QMainWindow
     
 	void interface_init();
 	void sig_slot_init();
+
+	void load_favorite();
+
+	//void write_favorite();
 	// Что бы не проводить процедуку инициализации радиост. после перекл.каналов
 	qint32 chan_change_state	{-1}	;
 	
@@ -114,8 +128,9 @@ private:
 	void add_ch_release_slot();
 	void cb_ab_slot(const QString&);
 	void cb_gr_slot(const QString&);
-	
-signals :
+	void update_favorites(int curr_idx, int chan_num, int pb_idx, QString& s);
+
+  signals:
 	void sig_ptt(int);
 	
 };

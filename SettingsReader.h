@@ -58,8 +58,8 @@ public:
 	};
 	Server server;
 	std::array<Radio, 4> radio;
-	
-	
+
+	QStringList favorite_list;
 	// std::vector<int>								избранные для канала до 4-х
 	// std::vector<std::vector<int>>				избранные для радиостанции до 4-х
 	// std::vector<std::vector<std::vector<int>>>	избранные для всех радиостанций    

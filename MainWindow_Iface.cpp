@@ -146,31 +146,31 @@ void MainWindow::display_favorites(int radio, int channel)
 	
 }
 
-void MainWindow::write_favorite()
-{
-	QFile file;
-	
-	QTextStream stream;
-
-	file.setFileName("favorite.dat");
-	
-	if (file.open(QIODevice::WriteOnly | QIODevice::Text))
-	{
-		for (size_t i = 0; i < reader->server.directions; i++)
-		{
-			for (size_t j = 0; j < reader->radio[i].channels; j++)
-			{
-				for (size_t k = 0; k < reader->favForAllRadioGr[i][j].size(); k++)
-				{
-					stream << i << "," << j << "," << reader->favForAllRadioGr[i][j][k] << "\n";
-				}
-				for (size_t k = 0; k < reader->favForAllRadioAb[i][j].size(); k++)
-				{
-					stream << i << "," << j << "," << reader->favForAllRadioAb[i][j][k] << "\n";
-				} 
-			}				
-		}	
-		
-		file.close();
-	}
-}
+//void MainWindow::write_favorite()
+//{
+//	QFile file;
+//	
+//	QTextStream stream;
+//
+//	file.setFileName("favorite.dat");
+//	
+//	if (file.open(QIODevice::WriteOnly | QIODevice::Text))
+//	{
+//		for (size_t i = 0; i < reader->server.directions; i++)
+//		{
+//			for (size_t j = 0; j < reader->radio[i].channels; j++)
+//			{
+//				for (size_t k = 0; k < reader->favForAllRadioGr[i][j].size(); k++)
+//				{
+//					stream << i << "," << j << "," << reader->favForAllRadioGr[i][j][k] << "\n";
+//				}
+//				for (size_t k = 0; k < reader->favForAllRadioAb[i][j].size(); k++)
+//				{
+//					stream << i << "," << j << "," << reader->favForAllRadioAb[i][j][k] << "\n";
+//				} 
+//			}				
+//		}	
+//		
+//		file.close();
+//	}
+//}
